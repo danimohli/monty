@@ -29,3 +29,18 @@ void push(stack_t **stack, unsigned int n)
 	(*stack)->prev = node;
 	*stack = node;
 }
+
+/**
+ * pall - to print out all data in stack
+ * @stack: stack to out put
+ */
+void pall(stack_t **stack)
+{
+	stack_t *s = *stack;
+
+	while (*s != NULL)
+	{
+		printf("%d\n", s->n);
+		s = s->next;
+	}
+}
