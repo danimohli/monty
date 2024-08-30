@@ -8,7 +8,7 @@
 #include <errno.h>
 
 
-extern int DATA;
+extern int DATA; /* Global Variable Defination*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

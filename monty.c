@@ -1,30 +1,36 @@
 #include "monty.h"
+
+int DATA = 0;  /* Global variable definition */
+
 /**
- * main - the starting point of excution
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 on Successful
- */
+* main - Entry point for the Monty interpreter
+* @argc: Argument count
+* @argv: Argument vector
+*
+* Return: 0 on success, EXIT_FAILURE on error
+*/
 int main(int argc, char *argv[])
 {
+	FILE *file;
 	stack_t *stack = NULL;
 	char *buf = NULL, *opcode, *data;
-	int x;
-	unsigned int line_number = 0;
 	size_t num = 0;
-	FILE *file;
+	unsigned int line_number = 0;
+	int x;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: %s file\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
+
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+
 	while (getline(&buf, &num, file) != -1)
 	{
 		line_number++;
@@ -32,16 +38,21 @@ int main(int argc, char *argv[])
 		if (strcmp(opcode, "push") == 0)
 		{
 			data = strtok(NULL, " ");
-			x = atoi(data);
-			if (data == NULL || (x == 0 && strcmp(data, "0") != 0))
+			if (data != NULL)
 			{
-				fprintf(stderr, "L%u: usage: push integer", line_number);
-				exit(EXIT_FAILURE);
+				x = atoi(data);
+				if (x != 0)
+					DATA = x;
+				else
+				{
+					fprintf(stderr, "L%u: usage: push integer\n", line_number);
+					exit(EXIT_FAILURE);
+				}
 			}
-			DATA = x;
 		}
-		look_up(opcode, line_number, stack);
+		look_up(opcode, line_number, &stack);
 	}
+
 	free(buf);
 	fclose(file);
 	return (EXIT_SUCCESS);
