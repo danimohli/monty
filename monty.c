@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 
     if (argc != 2)
     {
-        fprintf(stderr, "USAGE: %s file\n", argv[0]);
+        fprintf(stderr, "USAGE: %s file\n", "monty");
         return (EXIT_FAILURE);
     }
 
