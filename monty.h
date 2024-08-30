@@ -53,6 +53,8 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
 
 void look_up(char *opcode, unsigned int line_number, stack_t **stack);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);

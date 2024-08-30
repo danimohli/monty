@@ -23,6 +23,8 @@ void look_up(char *opcode, unsigned int line_number, stack_t **stack)
 		{"div", t_div},
 		{"mod", mod},
 		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	for (x = 0; array[x].opcode != NULL; x++)
