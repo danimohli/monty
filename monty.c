@@ -57,7 +57,8 @@ void process_line(char *buf, stack_t **stack, unsigned int line_number)
 	if (strcmp(opcode, "push") == 0)
 	{
 		data = strtok(NULL, " \t\n");
-		if (data == NULL || (!isdigit(data[0]) && !(data[0] == '-' && isdigit(data[1]))))
+		if (data == NULL || (!isdigit(data[0]) && !(data[0] == '-'
+						&& isdigit(data[1]))))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
@@ -77,34 +78,33 @@ void process_line(char *buf, stack_t **stack, unsigned int line_number)
  */
 int main(int argc, char *argv[])
 {
-    FILE *file;
-    stack_t *stack = NULL;
-    char *buf = NULL;
-    size_t num = 0;
-    unsigned int line_number = 0;
+	FILE *file;
+	stack_t *stack = NULL;
+	char *buf = NULL;
+	size_t num = 0;
+	unsigned int line_number = 0;
 
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: %s file\n", "monty");
-        return (EXIT_FAILURE);
-    }
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: %s file\n", "monty");
+		exit(EXIT_FAILURE);
+	}
 
-    file = fopen(argv[1], "r");
-    if (!file)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        return (EXIT_FAILURE);
-    }
+	file = fopen(argv[1], "r");
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 
-    while (_getline(&buf, &num, file) != -1)
-    {
-        line_number++;
-        process_line(buf, &stack, line_number);
-    }
+	while (_getline(&buf, &num, file) != -1)
+	{
+		line_number++;
+		process_line(buf, &stack, line_number);
+	}
+	free(buf);
+	fclose(file);
+	pop(&stack, line_number);
 
-    free(buf);
-    fclose(file);
-    pop(&stack, line_number);
-
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
