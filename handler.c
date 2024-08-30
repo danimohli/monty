@@ -25,7 +25,7 @@ void look_up(char *opcode, unsigned int line_number, stack_t *stack)
 	{
 		if (strcmp(opcode, array[x].opcode) == 0)
 		{
-			array[x].f(stack, line_number);
+			array[x].f(&stack, line_number);
 			return;
 		}
 	}
