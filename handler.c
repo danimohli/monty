@@ -18,9 +18,9 @@ void look_up(char *opcode, unsigned int line_number, stack_t **stack)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", t_div},
 		{NULL, NULL}
 	};
-
 	for (x = 0; array[x].opcode != NULL; x++)
 	{
 		if (strcmp(opcode, array[x].opcode) == 0)
@@ -29,7 +29,6 @@ void look_up(char *opcode, unsigned int line_number, stack_t **stack)
 			return;
 		}
 	}
-
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
