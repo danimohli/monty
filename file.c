@@ -29,3 +29,28 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	free(curr);
 }
+/**
+ * pchar - The opcode pchar prints the char at the top of the stack.
+ * @stack: The stack
+ * @line_number: the line number of read file
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int ascii;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	ascii = (*stack)->n;
+
+	if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122))
+	{
+		printf("%c\n", ascii);
+		return;
+	}
+	fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+	exit(EXIT_FAILURE);
+}
