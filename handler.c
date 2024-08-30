@@ -17,6 +17,7 @@ void look_up(char *opcode, unsigned int line_number, stack_t **stack)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
