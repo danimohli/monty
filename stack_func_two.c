@@ -15,15 +15,16 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	result = (*stack)->n + (*stack)->next->n;
-
 	curr = *stack;
 	next = (*stack)->next;
+	result = curr->n + next->n;
+
 	next->n = result;
 	*stack = next;
 
 	free(curr);
 }
+
 /**
  * nop - the opcode nop doesn't do anything
  * @stack: stack

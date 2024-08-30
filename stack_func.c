@@ -22,23 +22,26 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		node->next = NULL;
 		*stack = node;
-		return;
 	}
-
-	node->next = *stack;
-	(*stack)->prev = node;
-	*stack = node;
+	else
+	{
+		node->next = *stack;
+		(*stack)->prev = node;
+		*stack = node;
+	}
 	(void) line_number;
 }
 
 /**
  * pall - to print out all data in stack
- * @stack: stack to out put
+ * @stack: stack to output
  * @line_number: the current line number in the bytecode file
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *s = *stack;
+	stack_t *s;
+
+	s = *stack;
 
 	while (s != NULL)
 	{
@@ -47,6 +50,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 	(void) line_number;
 }
+
 /**
  * pint - prints the value at the top of the stack
  * @stack: double pointer to the top of the stack
@@ -61,6 +65,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
 /**
  * pop - stack function to remove top element of the stack
  * @stack: stack to operate on or to remove from
@@ -68,7 +73,7 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *curr, *next;
+	stack_t *curr;
 
 	if (*stack == NULL)
 	{
@@ -77,14 +82,14 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	curr = *stack;
-	next = (*stack)->next;
-	*stack = next;
+	*stack = (*stack)->next;
 
 	free(curr);
 
-	if (next != NULL)
-		next->prev = NULL;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
 }
+
 /**
  * swap - The opcode swap swaps the top two elements of the stack.
  * @stack: stack where the changes should take place
