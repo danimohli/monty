@@ -54,3 +54,23 @@ void pchar(stack_t **stack, unsigned int line_number)
 	fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 	exit(EXIT_FAILURE);
 }
+/**
+ * The opcode pstr prints the string starting at the top of the stack
+ * @stack: The stack
+ *  @line_number: the line number of read file
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *h = *stack;
+	(void)line_number;
+
+	while (h != NULL)
+	{
+		if ((h->n >= 65 && h->n <= 90) || (h->n >= 97 && h->n <= 122))
+			printf("%c", h->n);
+		else
+			break;
+		h = h->next;
+	}
+	printf("\n");
+}
