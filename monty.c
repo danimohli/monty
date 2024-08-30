@@ -5,7 +5,7 @@
  * @argv: argument vector
  * Return: 0 on Successful
  */
-int main(int argc, *argv[])
+int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
 	char *buf = NULL, *opcode, *data;
