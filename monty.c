@@ -104,6 +104,7 @@ int main(int argc, char *argv[])
 
     free(buf);
     fclose(file);
+    pop(&stack, line_number);
 
     return (EXIT_SUCCESS);
 }
