@@ -93,7 +93,7 @@ void t_div(stack_t **stack, unsigned int line_number)
 	free(curr);
 }
 /**
- * mul - The opcode add adds the top two elements of the stack.
+ * mul - The opcode mul multiply the top two elements of the stack.
  * @stack: The stack location
  * @line_number: the current line number in the bytecode file
  */
