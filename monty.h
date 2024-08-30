@@ -1,13 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <sys/types.h>
+#include <errno.h>
 
-#define MAX_LINE_LENGTH 1024
+
+extern int DATA;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,4 +39,15 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+void nop(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void look_up(char *opcode, unsigned int line_number, stack_t *stack);
+
 #endif
