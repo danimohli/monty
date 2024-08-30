@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
 	stack_t *stack = NULL;
 	char *buf = NULL, *opcode, *data;
 	int DATA = 0, x;
-	unsigned int line_number = 0, num = 0;
+	unsigned int line_number = 0;
+	size_t num = 0;
 	FILE *file;
 
 	if (argc != 2)
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
 		{
 			data = strtok(NULL, " ");
 			x = atoi(data);
-			if (data == NULL || (x == 0 && strcmp(data, "0") != 0)
+			if (data == NULL || (x == 0 && strcmp(data, "0") != 0))
 			{
 				fprintf(stderr, "L%u: usage: push integer", line_number);
 				exit(EXIT_FAILURE);
