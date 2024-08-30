@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
 	char *buf = NULL, *opcode, *data;
-	int DATA = 0, x;
+	int DATA, x;
 	unsigned int line_number = 0;
 	size_t num = 0;
 	FILE *file;
