@@ -70,6 +70,22 @@ void process_line(char *buf, stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * free_stack - Frees the entire stack.
+ * @stack: Pointer to the stack to be freed.
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
+}
+
+/**
  * main - Entry point for the Monty interpreter.
  * @argc: Argument count.
  * @argv: Argument vector.
@@ -104,7 +120,9 @@ int main(int argc, char *argv[])
 	}
 	free(buf);
 	fclose(file);
-	pop(&stack, line_number);
+	free_stack(stack);
 
 	return (EXIT_SUCCESS);
 }
+
+
