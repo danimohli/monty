@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 				}
 			}
 		}
-		look_up(opcode, line_number, &stack);
+		look_up(opcode, line_number, stack);
 	}
 
 	free(buf);
