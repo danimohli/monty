@@ -55,7 +55,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	exit(EXIT_FAILURE);
 }
 /**
- * The opcode pstr prints the string starting at the top of the stack
+ * pstr - The opcode pstr prints the string starting at the top of the stack
  * @stack: The stack
  *  @line_number: the line number of read file
  */
