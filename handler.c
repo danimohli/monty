@@ -23,9 +23,9 @@ void look_up(char *opcode, unsigned int line_number, stack_t *stack)
 
 	for (x = 0; array[x].opcode != NULL; x++)
 	{
-		if (strcmp(opcode, array[i].opcode) == 0)
+		if (strcmp(opcode, array[x].opcode) == 0)
 		{
-			array[i].f(stack, line_number);
+			array[x].f(stack, line_number);
 			return;
 		}
 	}
