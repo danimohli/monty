@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
 	char *buf = NULL, *opcode, *data;
-	int DATA = 0, num = 0;
-	unsigned int line_num = 0;
+	int DATA = 0, x;
+	unsigned int line_number = 0, num = 0;
 	FILE *file;
 
 	if (argc != 2)
